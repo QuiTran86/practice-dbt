@@ -5,3 +5,79 @@ sources:
     schema: SOURCE_DATA
     tables:
       - name: ACB_BANK_POSITION
+        description: >
+          The landing table holding the data imported from the CSV file
+          extracted by ACB bank.
+        columns:
+          - name: ACCOUNTID
+            description: The code for identifying account in ACB bank.
+            tests:
+              - not_null
+          
+          - name: SYMBOL
+            description: The symbol of the security of ACB bank.
+            tests:
+              - not_null
+              - unique
+          
+          - name: DESCRIPTION
+            description: The name of the security at ACB bank.
+            tests:
+              - not_null
+
+          - name: EXCHANGE
+            description: >
+              The short name or code of the exchange where
+              the security is traded.
+            tests:
+              - not_null
+
+          - name: REPORT_DATE
+            description: >
+              The date of the report was extracted by ACB bank.
+              We expect this position to be effective from this date forward, until the change is seen
+            tests:
+              - not_null
+
+          - name: QUANTITY
+            description: >
+              The number of securities we hold in the portfolio at ACB bank at the report date.
+            tests:
+              - not_null
+          
+          - name: COST_BASE
+            description: >
+              The cost we paid for the securities that we hold in the portfolio at ACB bank
+              at the report date.
+            tests:
+              - not_null
+
+          - name: POSITION_VALUE
+            description: >
+              The value of the securities in the portfolio at the ACB bank on the report date.
+            tests:
+              - not_null
+
+          - name: CURRENCY
+            description: >
+              The currency of the monetary amounts of the position.
+            tests:
+              - not_null
+
+  - name: position_acb_bank
+    description: The positions we have at ACB bank in the portfolio
+    database: PORTFOLIO_TRACKING
+    schema: SOURCE_DATA_REFINED
+    tables:
+      - name: POSITION_ACB_BANK
+        columns:
+          - name: UNREALIZED_PROFIT
+            description: The unrealized profit in the position
+            tests:
+              - not_null
+          
+          - name: UNREALIZED_PROFIT_PCT
+            description: The unrealized profit percentage in the position
+            tests:
+              - not_null
+  
