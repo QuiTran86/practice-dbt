@@ -69,7 +69,7 @@ sources:
     database: PORTFOLIO_TRACKING
     schema: SOURCE_DATA_REFINED
     tables:
-      - name: POSITION_ACB_BANK
+      - name: REF_POSITION_ACB_BANK
         columns:
           - name: UNREALIZED_PROFIT
             description: The unrealized profit in the position

@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref('ref_position_acb_bank') }}
