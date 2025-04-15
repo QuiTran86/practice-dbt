@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref('ref_acb_bank_currency_iso') }}
