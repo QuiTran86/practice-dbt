@@ -1,5 +1,6 @@
-WITH current_data_from_snapshot AS (SELECT * EXCLUDE (DBT_SCD_ID, DBT_UPDATED_AT, DBT_VALID_FROM, DBT_VALID_TO)
-                                    FROM {{ ref('snsh_acb_bank_security_info') }}
-                                    WHERE DBT_VALID_TO IS NULL
-                                    )
+WITH current_data_from_snapshot AS (
+    {{
+        current_from_snapshot(snsh_ref = ref('snsh_acb_bank_security_info'))
+    }}
+)
 SELECT * FROM current_data_from_snapshot
