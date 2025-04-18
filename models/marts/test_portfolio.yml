@@ -23,7 +23,7 @@ models:
           - unique
   - name: dim_country
     columns:
-      - name: COUNTRY_CODE_KEY
+      - name: COUNTRY_CODE_HKEY
         tests:
           - not_null
           - unique

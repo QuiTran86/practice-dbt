@@ -20,3 +20,12 @@ models:
               to: ref('ref_acb_bank_security_info')
               field: SECURITY_CODE
 
+      - name: CURRENCY_CODE
+        description: The code of the currency in the acb bank
+        tests:
+          - relationships:
+              to: ref('ref_acb_bank_currency_iso')
+              field: CURRENCY_CODE
+
+
+
