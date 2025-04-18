@@ -1,0 +1,29 @@
+version: 2
+models:
+  - name: fct_position
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ACCOUNT_CODE
+            - SECURITY_CODE
+  - name: dim_security
+    columns:
+      - name: SECURITY_CODE
+        tests:
+          - not_null
+          - unique
+          - has_no_default_key #Default key is: System.DefaultKey
+          - warn_on_multiple_default_key
+
+  - name: dim_currency
+    columns:
+      - name: CURRENCY_HKEY
+        tests:
+          - not_null
+          - unique
+  - name: dim_country
+    columns:
+      - name: COUNTRY_CODE_KEY
+        tests:
+          - not_null
+          - unique

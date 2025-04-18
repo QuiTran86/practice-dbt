@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: ref_position_acb_bank
+    description: The positions we have in the ACB bank portfolio.
+    columns:
+      - name: UNREALIZED_PROFIT
+        description: The unrealized profit in the position
+        tests:
+          - not_null
+
+      - name: UNREALIZED_PROFIT_PCT
+        description: The unrealized profit (%) in the position
+        tests:
+          - not_null
+
+      - name: SECURITY_CODE
+        description: The code of the security in the acb bank
+        tests:
+          - relationships:
+              to: ref('ref_acb_bank_security_info')
+              field: SECURITY_CODE
+
